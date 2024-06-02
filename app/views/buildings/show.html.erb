@@ -1,0 +1,49 @@
+<!-- app/views/buildings/show.html.erb -->
+<h1>Информация о здании</h1>
+
+<p>
+  <strong>Год постройки:</strong>
+  <%= @building.year_built %>
+</p>
+
+<p>
+  <strong>Материал стен:</strong>
+  <%= @building.wall_material %>
+</p>
+
+<p>
+  <strong>Количество этажей:</strong>
+  <%= @building.number_of_floors %>
+</p>
+
+<p>
+  <strong>Тип перекрытий:</strong>
+  <%= @building.floor_type %>
+</p>
+
+<p>
+  <strong>Газ:</strong>
+  <%= @building.gas ? 'Есть' : 'Нет' %>
+</p>
+
+<p>
+  <strong>Количество подъездов:</strong>
+  <%= @building.number_of_entrances %>
+</p>
+
+<p>
+  <strong>Количество квартир:</strong>
+  <%= @building.number_of_apartments %>
+</p>
+
+<h2>Квартиры в этом здании</h2>
+<ul>
+  <% @building.apartments.each do |apartment| %>
+    <li>
+      Квартира <%= apartment.number %>, Этаж <%= apartment.floor %>, Комнат <%= apartment.number_of_rooms %>, Площадь <%= apartment.area %> кв.м, Цена <%= apartment.price %> руб.
+      <%= link_to 'Показать', building_apartment_path(@building, apartment), class: "btn btn-primary" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Вернуться к списку зданий', buildings_path %>

@@ -1,0 +1,30 @@
+<!-- app/views/apartments/new.html.erb -->
+<h1>Добавить новую квартиру в здании <%= @building.id %></h1>
+
+<%= form_with model: [@building, @apartment], local: true do |form| %>
+  <div>
+    <%= form.label :number, 'Номер квартиры' %>
+    <%= form.text_field :number %>
+  </div>
+  <div>
+    <%= form.label :floor, 'Этаж' %>
+    <%= form.number_field :floor %>
+  </div>
+  <div>
+    <%= form.label :number_of_rooms, 'Количество комнат' %>
+    <%= form.number_field :number_of_rooms %>
+  </div>
+  <div>
+    <%= form.label :area, 'Площадь (кв.м)' %>
+    <%= form.number_field :area %>
+  </div>
+  <div>
+    <%= form.label :price, 'Цена' %>
+    <%= form.number_field :price %>
+  </div>
+  <div>
+    <%= form.submit 'Сохранить' %>
+  </div>
+<% end %>
+
+<%= link_to 'Вернуться к списку зданий', buildings_path %>

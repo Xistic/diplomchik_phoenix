@@ -1,0 +1,17 @@
+<%= form_with model: [ @apartment, @apartment_check ], local: true do |form| %>
+  <div>
+    <%= form.label :checked_by %>
+    <%= form.text_field :checked_by %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, ApartmentCheck.statuses.keys.map { |status| [status.humanize, status] } %>
+  </div>
+  <div>
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+  <div>
+    <%= form.submit 'Check' %>
+  </div>
+<% end %>

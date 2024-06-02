@@ -1,0 +1,29 @@
+<!-- app/views/apartments/show.html.erb -->
+<h1>Информация о квартире</h1>
+
+<p>
+  <strong>Номер квартиры:</strong>
+  <%= @apartment.number %>
+</p>
+
+<p>
+  <strong>Этаж:</strong>
+  <%= @apartment.floor %>
+</p>
+
+<p>
+  <strong>Количество комнат:</strong>
+  <%= @apartment.number_of_rooms %>
+</p>
+
+<p>
+  <strong>Площадь (кв.м):</strong>
+  <%= @apartment.area %>
+</p>
+
+<p>
+  <strong>Цена:</strong>
+  <%= @apartment.price %>
+</p>
+
+<%= link_to 'Вернуться к зданию', building_path(@apartment.building) %>

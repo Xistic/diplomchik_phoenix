@@ -1,0 +1,38 @@
+<!-- app/views/buildings/new.html.erb -->
+<h1>Добавить новое здание</h1>
+
+<%= form_with model: @building, local: true do |form| %>
+  <div>
+    <%= form.label :year_built, 'Год постройки' %>
+    <%= form.number_field :year_built %>
+  </div>
+  <div>
+    <%= form.label :wall_material, 'Материал стен' %>
+    <%= form.text_field :wall_material %>
+  </div>
+  <div>
+    <%= form.label :number_of_floors, 'Количество этажей' %>
+    <%= form.number_field :number_of_floors %>
+  </div>
+  <div>
+    <%= form.label :floor_type, 'Тип перекрытий' %>
+    <%= form.text_field :floor_type %>
+  </div>
+  <div>
+    <%= form.label :gas, 'Газ' %>
+    <%= form.check_box :gas %>
+  </div>
+  <div>
+    <%= form.label :number_of_entrances, 'Количество подъездов' %>
+    <%= form.number_field :number_of_entrances %>
+  </div>
+  <div>
+    <%= form.label :number_of_apartments, 'Количество квартир' %>
+    <%= form.number_field :number_of_apartments %>
+  </div>
+  <div>
+    <%= form.submit 'Сохранить' %>
+  </div>
+<% end %>
+
+<%= link_to 'Вернуться к списку зданий', buildings_path %>

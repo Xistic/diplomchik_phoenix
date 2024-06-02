@@ -1,0 +1,37 @@
+<!-- app/views/buildings/index.html.erb -->
+<h1>Здания</h1>
+
+<%= link_to 'Добавить новое здание', new_building_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Год постройки</th>
+      <th>Материал стен</th>
+      <th>Количество этажей</th>
+      <th>Тип перекрытий</th>
+      <th>Газ</th>
+      <th>Количество подъездов</th>
+      <th>Количество квартир</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td><%= building.year_built %></td>
+        <td><%= building.wall_material %></td>
+        <td><%= building.number_of_floors %></td>
+        <td><%= building.floor_type %></td>
+        <td><%= building.gas ? 'Да' : 'Нет' %></td>
+        <td><%= building.number_of_entrances %></td>
+        <td><%= building.number_of_apartments %></td>
+        <td>
+          <%= link_to 'Просмотр', building_path(building) %>
+          <%= link_to 'Редактировать', edit_building_path(building) %>
+          <%= link_to 'Удалить', building_path(building), method: :delete, data: { confirm: 'Вы уверены?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
