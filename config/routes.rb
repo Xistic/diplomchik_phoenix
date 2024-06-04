@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :buildings do
-    resources :apartments, only: [:new, :create, :show]
+    resources :apartments, only: [:new, :create, :show, :destroy, :index]
   end
 
-  resources :apartments, only: [:index] do
-    resource :apartment_check, only: [:new, :create]
-  end
+  resources :apartments
 
   root "buildings#index"
 end

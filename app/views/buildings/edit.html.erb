@@ -1,15 +1,7 @@
-<!-- app/views/buildings/new.html.erb -->
-<h1>Добавить новое здание</h1>
+<!-- app/views/buildings/edit.html.erb -->
+<h1>Редактировать здание</h1>
 
 <%= form_with model: @building, local: true, html: { class: 'needs-validation' }, novalidate: true do |form| %>
-  <div class="mb-3">
-    <%= form.label :name, 'Адрес', class: 'form-label' %>
-    <%= form.text_field :name, class: 'form-control', required: true %>
-    <div class="invalid-feedback">
-      Пожалуйста, введите адрес.
-    </div>
-  </div>
-  
   <div class="mb-3">
     <%= form.label :year_built, 'Год постройки', class: 'form-label' %>
     <%= form.number_field :year_built, class: 'form-control', required: true %>

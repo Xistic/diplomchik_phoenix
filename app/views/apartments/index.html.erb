@@ -1,0 +1,35 @@
+<!-- app/views/apartments/index.html.erb -->
+<h1 class="large-text">Список всех квартир</h1>
+
+<table class="table table-striped large-text">
+  <thead>
+    <tr>
+      <th>Номер</th>
+      <th>Этаж</th>
+      <th>Количество комнат</th>
+      <th>Площадь (кв.м)</th>
+      <th>Цена (руб)</th>
+      <th>Здание</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @apartments.each do |apartment| %>
+      <tr>
+        <td><%= apartment.number %></td>
+        <td><%= apartment.floor %></td>
+        <td><%= apartment.number_of_rooms %></td>
+        <td><%= apartment.area %></td>
+        <td><%= apartment.price %></td>
+        <td><%= apartment.building.try(:name) %></td>
+        <td>
+          <%= link_to 'Показать', building_apartment_path(apartment.building, apartment), class: "btn btn-primary btn-sm" %>
+          <%= link_to 'Удалить', building_apartment_path(apartment.building, apartment), method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Добавить новую квартиру', new_apartment_path, class: "btn btn-success" %>
+<%= link_to 'Вернуться к списку зданий', buildings_path, class: "btn btn-secondary" %>

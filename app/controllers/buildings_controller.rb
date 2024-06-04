@@ -43,6 +43,6 @@ class BuildingsController < ApplicationController
   private
 
   def building_params
-    params.require(:building).permit(:year_built, :wall_material, :number_of_floors, :floor_type, :gas, :number_of_entrances, :number_of_apartments)
+    params.require(:building).permit(:name, :year_built, :wall_material, :number_of_floors, :floor_type, :gas, :number_of_entrances, :number_of_apartments)
   end
 end

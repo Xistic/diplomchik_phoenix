@@ -1,49 +1,70 @@
 <!-- app/views/buildings/show.html.erb -->
-<h1>Информация о здании</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Информация о здании</h1>
 
-<p>
-  <strong>Год постройки:</strong>
-  <%= @building.year_built %>
-</p>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Детали здания</h2>
 
-<p>
-  <strong>Материал стен:</strong>
-  <%= @building.wall_material %>
-</p>
+      <p class="card-text">
+        <strong>Адрес:</strong>
+        <%= @building.name %>
+      </p>
 
-<p>
-  <strong>Количество этажей:</strong>
-  <%= @building.number_of_floors %>
-</p>
 
-<p>
-  <strong>Тип перекрытий:</strong>
-  <%= @building.floor_type %>
-</p>
+      <p class="card-text">
+        <strong>Год постройки:</strong>
+        <%= @building.year_built %>
+      </p>
 
-<p>
-  <strong>Газ:</strong>
-  <%= @building.gas ? 'Есть' : 'Нет' %>
-</p>
+      <p class="card-text">
+        <strong>Материал стен:</strong>
+        <%= @building.wall_material %>
+      </p>
 
-<p>
-  <strong>Количество подъездов:</strong>
-  <%= @building.number_of_entrances %>
-</p>
+      <p class="card-text">
+        <strong>Количество этажей:</strong>
+        <%= @building.number_of_floors %>
+      </p>
 
-<p>
-  <strong>Количество квартир:</strong>
-  <%= @building.number_of_apartments %>
-</p>
+      <p class="card-text">
+        <strong>Тип перекрытий:</strong>
+        <%= @building.floor_type %>
+      </p>
 
-<h2>Квартиры в этом здании</h2>
-<ul>
-  <% @building.apartments.each do |apartment| %>
-    <li>
-      Квартира <%= apartment.number %>, Этаж <%= apartment.floor %>, Комнат <%= apartment.number_of_rooms %>, Площадь <%= apartment.area %> кв.м, Цена <%= apartment.price %> руб.
-      <%= link_to 'Показать', building_apartment_path(@building, apartment), class: "btn btn-primary" %>
-    </li>
-  <% end %>
-</ul>
+      <p class="card-text">
+        <strong>Газ:</strong>
+        <%= @building.gas ? 'Есть' : 'Нет' %>
+      </p>
 
-<%= link_to 'Вернуться к списку зданий', buildings_path %>
+      <p class="card-text">
+        <strong>Количество подъездов:</strong>
+        <%= @building.number_of_entrances %>
+      </p>
+
+      <p class="card-text">
+        <strong>Количество квартир:</strong>
+        <%= @building.number_of_apartments %>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Квартиры в этом здании</h2>
+      <ul class="list-group list-group-flush">
+        <% @building.apartments.each do |apartment| %>
+          <li class="list-group-item">
+            Квартира <%= apartment.number %>, Этаж <%= apartment.floor %>, Комнат <%= apartment.number_of_rooms %>, Площадь <%= apartment.area %> кв.м, Цена <%= apartment.price %> руб.
+            <%= link_to 'Показать', building_apartment_path(@building, apartment), class: "btn btn-primary btn-sm float-end" %>
+            <%= button_to 'Удалить квартиру', building_apartment_path(@building, apartment), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger btn-sm' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to 'Вернуться к списку зданий', buildings_path, class: "btn btn-secondary" %>
+  </div>
+</div>

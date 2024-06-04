@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_02_000002) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_192556) do
   create_table "apartment_checks", force: :cascade do |t|
     t.integer "apartment_id", null: false
     t.string "checked_by"
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_02_000002) do
     t.integer "number_of_apartments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   add_foreign_key "apartment_checks", "apartments"
