@@ -4,14 +4,12 @@
 
     <%= link_to 'Добавить новое здание', new_building_path, class: "btn btn-primary" %>
 
-    <table class="table table-striped md-4">
+    <table class="table table-striped mt-4">
         <thead>
-            <tr>
+            <tr class="table-light"> 
+                <th class="text-center">Адрес</th>
                 <th class="text-center">Год постройки</th>
-                <th class="text-center">Материал стен</th>
                 <th class="text-center">Количество этажей</th>
-                <th class="text-center">Тип перекрытий</th>
-                <th class="text-center">Газ</th>
                 <th class="text-center">Количество подъездов</th>
                 <th class="text-center">Количество квартир</th>
                 <th class="text-center">Действия</th>
@@ -20,15 +18,13 @@
         <tbody>
             <% @buildings.each do |building| %>
             <tr>
+                <td class="text-center"><%= building.name %></td>
                 <td class="text-center"><%= building.year_built %></td>
-                <td class="text-center"><%= building.wall_material %></td>
                 <td class="text-center"><%= building.number_of_floors %></td>
-                <td class="text-center"><%= building.floor_type %></td>
-                <td class="text-center"><%= building.gas ? 'Да' : 'Нет' %></td>
                 <td class="text-center"><%= building.number_of_entrances %></td>
                 <td class="text-center"><%= building.number_of_apartments %></td>
                 <td class="text-center d-flex">
-                    <%= link_to 'Просмотр', building_path(building), class: "btn btn-outline-light" %>
+                    <%= link_to 'Просмотр', building_path(building), class: "btn btn-outline-primary" %>
                     <%= link_to 'Редактировать', edit_building_path(building), class: "btn btn-outline-warning" %>
                     <%= button_to 'Удалить', building_path(building), method: :delete, data: { turbo_confirm: 'Вы уверены?' }, class: "btn btn-outline-danger" %>
                 </td>

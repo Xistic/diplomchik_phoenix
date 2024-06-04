@@ -58,9 +58,6 @@
   <div class="mb-3">
     <%= form.label :number_of_apartments, 'Количество квартир', class: 'form-label' %>
     <%= form.number_field :number_of_apartments, class: 'form-control', required: true %>
-    <div class="invalid-feedback">
-      Пожалуйста, введите количество квартир.
-    </div>
   </div>
 
   <div class="mb-3">
@@ -68,26 +65,3 @@
     <%= link_to 'Вернуться к списку зданий', buildings_path, class: 'btn btn-secondary' %>
   </div>
 <% end %>
-
-<script>
-  // JavaScript for disabling form submissions if there are invalid fields
-  (function () {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
-</script>
